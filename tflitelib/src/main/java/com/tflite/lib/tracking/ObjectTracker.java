@@ -58,10 +58,10 @@ public class ObjectTracker {
 
     static {
         try {
-            System.loadLibrary("tflite");
+            System.loadLibrary("tf_lite");
             libraryFound = true;
         } catch (UnsatisfiedLinkError e) {
-            LOGGER.e("tflite.so not found, tracking unavailable");
+            LOGGER.e("tf_lite.so not found, tracking unavailable");
         }
     }
 

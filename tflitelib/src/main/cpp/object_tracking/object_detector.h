@@ -35,7 +35,7 @@ limitations under the License.
 #include "image.h"
 #include "integral_image.h"
 #ifdef __RENDER_OPENGL__
-#include "tensorflow/examples/android/jni/object_tracking/sprite.h"
+#include "sprite.h"
 #endif
 #include "utils.h"
 
