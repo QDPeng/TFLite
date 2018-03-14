@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
+message('tf lite cmake=======================')
 project(TENSORFLOW_DEMO)
 cmake_minimum_required(VERSION 3.4.1)
 
@@ -21,7 +21,7 @@ set(CMAKE_VERBOSE_MAKEFILE on)
 
 #get_filename_component(TF_SRC_ROOT ${CMAKE_SOURCE_DIR}/../../../..  ABSOLUTE)
 get_filename_component(SAMPLE_SRC_DIR  ${CMAKE_SOURCE_DIR}/..  ABSOLUTE)
-
+message("${SAMPLE_SRC_DIR}")
 if (ANDROID_ABI MATCHES "^armeabi-v7a$")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mfloat-abi=softfp -mfpu=neon")
 elseif(ANDROID_ABI MATCHES "^arm64-v8a")
@@ -36,6 +36,7 @@ set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} \
                               -Wl,--whole-archive -fPIE -v")
 
 file(GLOB_RECURSE tf_lite_sources ./*.*)
+message('${tf_lite_sources}')
 add_library(tf_lite SHARED ${tf_lite_sources})
 target_include_directories(tf_lite PRIVATE
                            ${CMAKE_SOURCE_DIR})

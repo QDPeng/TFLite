@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TFLite.iml" filepath="$PROJECT_DIR$/TFLite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/detector/detector.iml" filepath="$PROJECT_DIR$/detector/detector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tflitelib/tflitelib.iml" filepath="$PROJECT_DIR$/tflitelib/tflitelib.iml" />
+    </modules>
+  </component>
+</project>
