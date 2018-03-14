@@ -31,9 +31,9 @@ public class ImageUtils {
 
   static {
     try {
-      System.loadLibrary("tf_lite");
+      System.loadLibrary("tflite");
     } catch (UnsatisfiedLinkError e) {
-      LOGGER.w("Native library not found, native RGB -> YUV conversion may be unavailable.");
+      LOGGER.e("tflite Native library not found, native RGB -> YUV conversion may be unavailable.");
     }
   }
 

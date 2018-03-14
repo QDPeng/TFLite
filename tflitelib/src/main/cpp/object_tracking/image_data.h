@@ -18,6 +18,7 @@ limitations under the License.
 
 #include <stdint.h>
 #include <memory>
+#include <bits/unique_ptr.h>
 
 #include "image-inl.h"
 #include "image.h"

@@ -1,47 +1,18 @@
-#
-# Copyright (C) 2016 The Android Open Source Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-message('tf lite cmake=======================')
-project(TENSORFLOW_DEMO)
+project(TFLITE)
 cmake_minimum_required(VERSION 3.4.1)
+add_definitions(-std=c++11)
 
-set(CMAKE_VERBOSE_MAKEFILE on)
+#file(GLOB_RECURSE tf_lite_src *.*)
+# file(GLOB_RECURSE tf_lite_include *.h)
+# INCLUDE_DIRECTORIES(${tf_lite_include})
 
-#get_filename_component(TF_SRC_ROOT ${CMAKE_SOURCE_DIR}/../../../..  ABSOLUTE)
-get_filename_component(SAMPLE_SRC_DIR  ${CMAKE_SOURCE_DIR}/..  ABSOLUTE)
-message("${SAMPLE_SRC_DIR}")
-if (ANDROID_ABI MATCHES "^armeabi-v7a$")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mfloat-abi=softfp -mfpu=neon")
-elseif(ANDROID_ABI MATCHES "^arm64-v8a")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -ftree-vectorize")
-endif()
+set(OBJ_TRACK ${CMAKE_CURRENT_SOURCE_DIR}/object_tracking)
+aux_source_directory(${OBJ_TRACK} track_src)
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR} image_src)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DSTANDALONE_DEMO_LIB \
-                    -std=c++11 -fno-exceptions -fno-rtti -O2 -Wno-narrowing \
-                    -fPIE")
-set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} \
-                              -Wl,--allow-multiple-definition \
-                              -Wl,--whole-archive -fPIE -v")
-
-file(GLOB_RECURSE tf_lite_sources ./*.*)
-message('${tf_lite_sources}')
-add_library(tf_lite SHARED ${tf_lite_sources})
-target_include_directories(tf_lite PRIVATE
-                           ${CMAKE_SOURCE_DIR})
-
-target_link_libraries(tf_lite
+add_library(tflite SHARED ${image_src} ${track_src})
+include_directories(${image_src} ${track_src})
+target_link_libraries(tflite
                       android
                       log
                       jnigraphics

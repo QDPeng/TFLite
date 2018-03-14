@@ -25,6 +25,8 @@ limitations under the License.
 // Allow this library to be built without depending on TensorFlow by
 // defining STANDALONE_DEMO_LIB. Otherwise TensorFlow headers will be
 // used.
+#define STANDALONE_DEMO_LIB
+
 #ifdef STANDALONE_DEMO_LIB
 
 // A macro to disallow the copy constructor and operator= functions
@@ -108,6 +110,7 @@ void LogPrintF(const int severity, const char* format, ...);
 //
 //#include "tensorflow/core/lib/strings/stringprintf.h"
 //#include "tensorflow/core/platform/logging.h"
+#define TAG "tensoflow"
 #define LOGV(...)
 #define LOGD(...)
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO,TAG ,__VA_ARGS__) // 定义LOGI类型

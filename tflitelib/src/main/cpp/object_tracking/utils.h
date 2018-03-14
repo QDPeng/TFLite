@@ -328,7 +328,7 @@ inline float ComputeCrossCorrelation(const float* const values1,
 inline void NormalizeNumbers(float* const values, const int num_vals) {
   // Find the mean and then subtract so that the new mean is 0.0.
   const float mean = ComputeMean(values, num_vals);
-  VLOG(2) << "Mean is " << mean;
+//  VLOG(2) << "Mean is " << mean;
   float* curr_data = values;
   for (int i = 0; i < num_vals; ++i) {
     *curr_data -= mean;
@@ -340,7 +340,7 @@ inline void NormalizeNumbers(float* const values, const int num_vals) {
   // so only scale by the standard deviation if this is not the case.
   const float std_dev = ComputeStdDev(values, num_vals, 0.0f);
   if (std_dev > 0.0f) {
-    VLOG(2) << "Std dev is " << std_dev;
+//    VLOG(2) << "Std dev is " << std_dev;
     curr_data = values;
     for (int i = 0; i < num_vals; ++i) {
       *curr_data /= std_dev;

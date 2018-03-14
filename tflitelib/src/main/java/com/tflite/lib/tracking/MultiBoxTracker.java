@@ -227,7 +227,6 @@ public class MultiBoxTracker {
         if (objectTracker == null) {
             return;
         }
-
         objectTracker.nextFrame(frame, null, timestamp, null, true);
 
         // Clean up any objects not worth tracking any more.

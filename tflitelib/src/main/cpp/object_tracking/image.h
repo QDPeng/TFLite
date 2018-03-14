@@ -20,6 +20,7 @@ limitations under the License.
 
 #include "geom.h"
 #include "utils.h"
+#include "logging.h"
 
 // TODO(andrewharp): Make this a cast to uint32_t if/when we go unsigned for
 // operations.

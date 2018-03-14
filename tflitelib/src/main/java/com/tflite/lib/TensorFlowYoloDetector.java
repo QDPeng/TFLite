@@ -39,18 +39,25 @@ public class TensorFlowYoloDetector implements Classifier {
     // Only return this many results with at least this confidence.
     private static final int MAX_RESULTS = 5;
 
-    private static final int NUM_CLASSES = 20;
+    private static final int NUM_CLASSES = 1;
 
     private static final int NUM_BOXES_PER_BLOCK = 5;
 
     // TODO(andrewharp): allow loading anchors and classes
     // from files.
+//    private static final double[] ANCHORS = {
+//            1.08, 1.19,
+//            3.42, 4.41,
+//            6.63, 11.38,
+//            9.42, 5.11,
+//            16.62, 10.52
+//    };
     private static final double[] ANCHORS = {
-            1.08, 1.19,
-            3.42, 4.41,
-            6.63, 11.38,
-            9.42, 5.11,
-            16.62, 10.52
+            0.738768,0.874946,
+            2.42204,2.65704,
+            4.30971,7.04493,
+            10.246,4.59428,
+            12.6868,11.8741
     };
 
     private static final String[] LABELS = {
